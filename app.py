@@ -22,9 +22,6 @@ st.set_page_config(page_title="TennisStats", page_icon="🎾", layout="centered"
 
 PRO_CSS = """
 <style>
-/* =========================================================
-   TENNISSTATS — PRO SPORT UI (UI only)
-   ========================================================= */
 :root{
   --bg: #f6f8fb;
   --bg2:#eef2f7;
@@ -39,8 +36,8 @@ PRO_CSS = """
   --stroke: rgba(2,6,23,0.10);
   --stroke2: rgba(2,6,23,0.08);
 
-  --accent:#16a34a;    /* verde tenis */
-  --accent2:#2563eb;   /* azul performance */
+  --accent:#16a34a;
+  --accent2:#2563eb;
   --danger:#dc2626;
   --warning:#f59e0b;
 
@@ -51,7 +48,6 @@ PRO_CSS = """
   --focus: 0 0 0 3px rgba(37,99,235,.16);
 }
 
-/* Background */
 html, body, [data-testid="stAppViewContainer"]{
   background:
     radial-gradient(900px 380px at 15% -5%, rgba(22,163,74,.14), transparent 60%),
@@ -60,7 +56,6 @@ html, body, [data-testid="stAppViewContainer"]{
   color: var(--text);
 }
 
-/* subtle grid */
 [data-testid="stAppViewContainer"]::before{
   content:"";
   position: fixed;
@@ -73,7 +68,6 @@ html, body, [data-testid="stAppViewContainer"]{
   mask-image: radial-gradient(circle at 50% 0%, black 20%, transparent 62%);
 }
 
-/* layout */
 .block-container{
   padding-top: 0.9rem;
   padding-bottom: 1.2rem;
@@ -82,25 +76,21 @@ html, body, [data-testid="stAppViewContainer"]{
 div[data-testid="stVerticalBlock"] > div { gap: 0.65rem; }
 header[data-testid="stHeader"]{ height: 0.5rem; background: transparent; }
 
-/* typography */
 * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 h1,h2,h3{ letter-spacing: .2px; }
 .stCaption, [data-testid="stCaptionContainer"]{ color: var(--muted2) !important; }
 
-/* markdown text */
 [data-testid="stMarkdownContainer"] p,
 [data-testid="stMarkdownContainer"] li,
 [data-testid="stMarkdownContainer"] span { color: var(--text); }
 .small-note{ color: var(--muted); font-size: .92rem; line-height: 1.25rem; }
 .kpi{ font-size: 1.03rem; font-weight: 950; }
 
-/* dividers */
 hr, [data-testid="stDivider"]{
   border-color: var(--stroke2) !important;
   margin: 0.55rem 0;
 }
 
-/* Inputs */
 div[data-baseweb="select"] > div,
 div[data-baseweb="input"] > div,
 div[data-baseweb="textarea"] > div{
@@ -123,7 +113,6 @@ div[data-baseweb="textarea"] > div:focus-within{
   border-color: rgba(37,99,235,.35) !important;
 }
 
-/* Buttons */
 .stButton>button{
   width: 100%;
   padding: 0.56rem 0.92rem;
@@ -142,7 +131,6 @@ div[data-baseweb="textarea"] > div:focus-within{
 .stButton>button:active{ transform: translateY(1px) scale(0.99); }
 .stButton>button:focus{ outline: none !important; box-shadow: var(--shadow2), var(--focus) !important; }
 
-/* Download button */
 [data-testid="stDownloadButton"] > button{
   border-radius: 14px !important;
   border: 1px solid rgba(37,99,235,.22) !important;
@@ -153,7 +141,6 @@ div[data-baseweb="textarea"] > div:focus-within{
 }
 [data-testid="stDownloadButton"] > button:hover{ border-color: rgba(37,99,235,.38) !important; }
 
-/* Expander */
 [data-testid="stExpander"]{
   border: 1px solid var(--stroke) !important;
   border-radius: var(--radius) !important;
@@ -163,7 +150,6 @@ div[data-baseweb="textarea"] > div:focus-within{
 }
 [data-testid="stExpander"] summary{ font-weight: 980 !important; }
 
-/* Tabs */
 [data-baseweb="tab-list"]{
   background: rgba(255,255,255,0.75);
   border: 1px solid var(--stroke);
@@ -183,7 +169,6 @@ button[role="tab"][aria-selected="true"]{
   border: 1px solid rgba(22,163,74,.25) !important;
 }
 
-/* Metrics */
 [data-testid="stMetric"]{
   border: 1px solid var(--stroke);
   border-radius: 18px;
@@ -204,7 +189,6 @@ button[role="tab"][aria-selected="true"]{
 [data-testid="stMetricValue"]{ color: var(--text) !important; font-weight: 1000 !important; }
 [data-testid="stMetricDelta"]{ color: rgba(22,163,74,0.95) !important; font-weight: 950 !important; }
 
-/* Alerts */
 [data-testid="stAlert"]{
   border-radius: 16px !important;
   border: 1px solid var(--stroke) !important;
@@ -212,7 +196,6 @@ button[role="tab"][aria-selected="true"]{
   box-shadow: var(--shadow2);
 }
 
-/* File uploader */
 section[data-testid="stFileUploaderDropzone"]{
   border-radius: 16px !important;
   border: 1px dashed rgba(2,6,23,0.20) !important;
@@ -220,7 +203,6 @@ section[data-testid="stFileUploaderDropzone"]{
   box-shadow: var(--shadow2);
 }
 
-/* Custom header (html) */
 .ts-header{
   border: 1px solid var(--stroke);
   border-radius: 22px;
@@ -274,7 +256,6 @@ section[data-testid="stFileUploaderDropzone"]{
   box-shadow: 0 0 0 3px rgba(22,163,74,.16);
 }
 
-/* Sidebar look */
 section[data-testid="stSidebar"]{
   background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.62)) !important;
   border-right: 1px solid var(--stroke) !important;
@@ -401,7 +382,6 @@ def fetch_tennis_news(max_items: int = 15):
                 data = resp.read()
 
             root = ET.fromstring(data)
-            # RSS
             channel = root.find("channel")
             if channel is not None:
                 for it in channel.findall("item"):
@@ -412,7 +392,6 @@ def fetch_tennis_news(max_items: int = 15):
                         items.append({"source": source_name, "title": title, "link": link, "published": pub})
                 continue
 
-            # Atom
             if root.tag.endswith("feed"):
                 ns = {"a": "http://www.w3.org/2005/Atom"}
                 for entry in root.findall("a:entry", ns):
@@ -610,7 +589,13 @@ class LiveMatch:
         p = self.estimate_point_win_prob()
         p_r = round(p, 3)
         st_ = self.state
-        return _prob_match_bo3(p_r, st_.sets_me, st_.sets_opp, st_.games_me, st_.games_opp, st_.pts_me, st_.pts_opp, st_.in_tiebreak)
+        return _prob_match_bo3(
+            p_r,
+            st_.sets_me, st_.sets_opp,
+            st_.games_me, st_.games_opp,
+            st_.pts_me, st_.pts_opp,
+            st_.in_tiebreak
+        )
 
     def win_prob_series(self):
         probs = []
@@ -665,7 +650,14 @@ class LiveMatch:
         set_idx = before.sets_me + before.sets_opp + 1
         is_pressure = bool(before.in_tiebreak or (before.pts_me >= 3 and before.pts_opp >= 3))
 
-        self.points.append({"result": result, **meta, "surface": self.surface, "before": before.__dict__, "set_idx": set_idx, "pressure": is_pressure})
+        self.points.append({
+            "result": result,
+            **meta,
+            "surface": self.surface,
+            "before": before.__dict__,
+            "set_idx": set_idx,
+            "pressure": is_pressure,
+        })
 
         if result == "win":
             self.state.pts_me += 1
@@ -712,7 +704,10 @@ class LiveMatch:
         won = sum(1 for p in self.points if p["result"] == "win")
         pct = (won / total * 100.0) if total else 0.0
 
-        finishes = {"winner": 0, "unforced": 0, "forced": 0, "ace": 0, "double_fault": 0, "opp_error": 0, "opp_winner": 0}
+        finishes = {
+            "winner": 0, "unforced": 0, "forced": 0, "ace": 0,
+            "double_fault": 0, "opp_error": 0, "opp_winner": 0
+        }
 
         pressure_total = sum(1 for p in self.points if p.get("pressure"))
         pressure_won = sum(1 for p in self.points if p.get("pressure") and p.get("result") == "win")
@@ -943,18 +938,8 @@ def title_h(txt: str):
     st.markdown(f"## {txt}")
 
 
-def card(title: str, subtitle: str = ""):
-    """UI-only container. No cambia lógica."""
-    c = st.container(border=True)
-    with c:
-        st.markdown(f"### {title}")
-        if subtitle:
-            small_note(subtitle)
-    return c
-
-
 # ==========================================================
-# AUTH UI (más “pro” pero misma lógica)
+# AUTH UI
 # ==========================================================
 def auth_block():
     st.markdown(
@@ -1050,14 +1035,13 @@ user_key = st.session_state.auth_key
 user_display = st.session_state.auth_user
 
 # ==========================================================
-# SIDEBAR NAV (UI-only)
+# SIDEBAR NAV
 # ==========================================================
 with st.sidebar:
     st.markdown("### 🎾 TennisStats")
     st.caption("Panel de navegación")
     st.markdown(f"**👤 Usuario:** `{user_display}`")
 
-    # Navegación: solo cambia UX, no la lógica (seguimos usando st.session_state.page)
     page_map = {
         "🎾 LIVE": "LIVE",
         "📈 Analysis": "ANALYSIS",
@@ -1065,13 +1049,11 @@ with st.sidebar:
         "📰 Noticias": "NEWS",
         "🧠 Psico": "PSICO",
     }
-    # Selección actual
     current_label = next((k for k, v in page_map.items() if v == st.session_state.page), "🎾 LIVE")
     choice = st.radio("Página", list(page_map.keys()), index=list(page_map.keys()).index(current_label))
     st.session_state.page = page_map[choice]
 
     st.divider()
-
     if st.button("🚪 Salir", use_container_width=True):
         st.session_state.authed = False
         st.session_state.auth_user = None
@@ -1081,7 +1063,7 @@ with st.sidebar:
         st.rerun()
 
 # ==========================================================
-# HEADER DASHBOARD (UI-only)
+# HEADER DASHBOARD
 # ==========================================================
 total_pts, won_pts, pct_pts = live.points_stats()
 p_point = live.estimate_point_win_prob()
@@ -1102,6 +1084,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.caption("")
+
 
 # ==========================================================
 # PAGE: LIVE
@@ -1394,4 +1377,136 @@ elif st.session_state.page == "STATS":
 
         k1, k2, k3 = st.columns(3, gap="small")
         with k1:
-            st.metric("Partidos", f"{agg['mat]()
+            st.metric(
+                "Partidos",
+                f"{agg['matches_pct']:.0f}%",
+                f"{agg['matches_win']} / {agg['matches_total']}",
+            )
+        with k2:
+            st.metric(
+                "Sets",
+                f"{agg['sets_pct']:.0f}%",
+                f"{agg['sets_w']} / {agg['sets_w'] + agg['sets_l']}",
+            )
+        with k3:
+            st.metric(
+                "Juegos",
+                f"{agg['games_pct']:.0f}%",
+                f"{agg['games_w']} / {agg['games_w'] + agg['games_l']}",
+            )
+
+    with st.container(border=True):
+        st.subheader("Resumen", anchor=False)
+        st.write(
+            f"**Puntos:** {agg['points_won']}/{agg['points_total']} ({agg['points_pct']:.0f}%) · "
+            f"**Presión:** {agg['pressure_won']}/{agg['pressure_total']} ({agg['pressure_pct']:.0f}%)"
+        )
+        fin = agg["finishes_sum"]
+        small_note(
+            f"Winners {fin['winner']} · ENF {fin['unforced']} · EF {fin['forced']} · "
+            f"Aces {fin['ace']} · Dobles faltas {fin['double_fault']}"
+        )
+
+    with st.container(border=True):
+        st.subheader("Racha últimos 10", anchor=False)
+        results = history.last_n_results(10, surface=(None if surf_filter == "Todas" else surf_filter))
+        if not results:
+            st.info("Aún no hay partidos guardados.")
+        else:
+            row = []
+            for r in results:
+                row.append("✅ W" if r == "W" else "⬛ L")
+            st.write(" · ".join(row))
+
+        st.subheader("Mejor racha", anchor=False)
+        best = history.best_streak(surface=(None if surf_filter == "Todas" else surf_filter))
+        st.write(f"**{best}** victorias seguidas")
+
+    with st.container(border=True):
+        st.subheader("Superficies", anchor=False)
+        surf = agg["surfaces"]
+        for srf in SURFACES:
+            w = surf.get(srf, {}).get("w", 0)
+            t_ = surf.get(srf, {}).get("t", 0)
+            pct = (w / t_ * 100.0) if t_ else 0.0
+            st.write(f"**{srf}:** {pct:.0f}%  ({w} de {t_})")
+
+
+# ==========================================================
+# PAGE: NEWS
+# ==========================================================
+elif st.session_state.page == "NEWS":
+    title_h("Noticias (tenis)")
+    small_note("Últimas noticias desde fuentes públicas (RSS). Si alguna fuente falla, se muestra el resto.")
+
+    with st.container(border=True):
+        cL, cR = st.columns([1, 1], gap="small")
+        with cL:
+            max_items = st.selectbox("Cuántas noticias", [8, 12, 15, 20], index=1)
+        with cR:
+            if st.button("🔄 Actualizar", use_container_width=True):
+                fetch_tennis_news.clear()
+                st.rerun()
+
+        news = fetch_tennis_news(max_items=int(max_items))
+
+        st.divider()
+        if not news:
+            st.info("No se pudieron cargar noticias ahora mismo. Prueba a recargar en unos segundos.")
+        else:
+            for it in news:
+                src = it.get("source", "—")
+                title = it.get("title", "Noticia")
+                link = it.get("link", "#")
+                pub = it.get("published", "")
+                if pub:
+                    st.markdown(f"- **[{title}]({link})**  \n  <span class='small-note'>{src} · {pub}</span>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"- **[{title}]({link})**  \n  <span class='small-note'>{src}</span>", unsafe_allow_html=True)
+
+
+# ==========================================================
+# PAGE: PSICO
+# ==========================================================
+else:
+    title_h("Psico")
+    small_note("Material en PDF (visible y descargable).")
+
+    with st.container(border=True):
+        psico_dir = Path("psico_pdfs")
+        pdfs = []
+        if psico_dir.exists() and psico_dir.is_dir():
+            pdfs = sorted([p for p in psico_dir.glob("*.pdf") if p.is_file()], key=lambda x: x.name.lower())
+
+        st.divider()
+        if not pdfs:
+            st.info("No se han encontrado PDFs en la carpeta `psico_pdfs/`. Sube los archivos al repo y redeploy.")
+        else:
+            for p in pdfs:
+                k = hashlib.md5(p.name.encode("utf-8")).hexdigest()[:10]
+                with st.expander(f"📄 {p.name}", expanded=False):
+                    try:
+                        data = p.read_bytes()
+                    except Exception as e:
+                        st.error(f"No se pudo leer el PDF: {e}")
+                        continue
+
+                    st.download_button(
+                        "⬇️ Descargar PDF",
+                        data=data,
+                        file_name=p.name,
+                        mime="application/pdf",
+                        use_container_width=True,
+                        key=f"psico_dl_{k}",
+                    )
+
+                    b64 = base64.b64encode(data).decode("utf-8")
+                    html = f"""
+                    <iframe
+                        src="data:application/pdf;base64,{b64}"
+                        width="100%"
+                        height="650"
+                        style="border: 1px solid rgba(2,6,23,0.12); border-radius: 14px; background: rgba(255,255,255,0.6);"
+                    ></iframe>
+                    """
+                    st.components.v1.html(html, height=680, scrolling=False)
